@@ -16,3 +16,6 @@ td{
 hr{
     color:aqua;
 }
+.carousel-item{
+    height: 500px;
+}

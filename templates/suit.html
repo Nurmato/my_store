@@ -1,0 +1,75 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block title %} {{title}} {% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://shelbylimited.ru/upload/medialibrary/1db/1db1e304682684b08bd25230a4bff208.jpg" class="d-block w-100" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://static.tildacdn.com/tild3635-3630-4532-b637-626437623238/suite0.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://sunmag.me/wp-content/uploads/2018/02/sunmag-1-muzhskiye-svadebnyye-kostyumy.jpg" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+<!-- 
+  <div class="container">
+      <h1 class="text-center mt-5 mb-5">Костюмы</h1>
+      <div class="card" style="width: 18rem;">
+        <img height="300" src="https://images.prom.ua/2573735919_w640_h640_muzhskoj-klassicheskij-kostyum.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Черный костюм</h5>
+          <p class="card-text">Черный костюм</p>
+          <a href="#" class="btn btn-primary">Купить</a>
+          <a href="#" class="btn btn-primary">Арендовать</a>
+        </div>
+      </div>
+  </div> -->
+  <br>
+  <div class="row">
+    {% for product in products %}
+    <div class="col-6 col-md-6 col-lg-4 mb-3">
+        <div class="card h-100 border-0">
+            {% if product.image %}
+            <div class="card-img-top">
+                <img src="{{product.image.url}}" class="img-fluid mx-auto d-block" height="300px"
+                     width="100%" alt="Card image cap">
+            </div>
+            {% else %}
+            <div class="card-img-top">
+                <img src="https://via.placeholder.com/240x240/5fa9f8/efefef"
+                     class="img-fluid mx-auto d-block" alt="Card image cap">
+            </div>
+            {% endif %}
+            <div class="card-body text-center">
+                <h4 class="card-title">
+                    <a href=""
+                       class=" font-weight-bold text-dark text-uppercase small"> {{product.name}}</a>
+                </h4>
+                <h5 class="card-price small text-warning">
+                    <i>
+                        <s></s> {{product.price}} сом</i>
+                    <i></i>
+                </h5>
+                <a href="" class="btn btn-primary ">Добавить в
+                    корзину</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+  
+{% endblock %}
